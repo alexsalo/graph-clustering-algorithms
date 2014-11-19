@@ -54,10 +54,10 @@ public class ReportPrinter {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		writer.print(final_clusters.size());
+		//writer.print(final_clusters.size());
 		for (int i = 0; i < final_clusters.size(); i++) {
-			writer.print("\n");
-			writer.print(final_clusters.get(i).size());
+			//writer.print("\n");
+			//writer.print(final_clusters.get(i).size());
 			for (String s : final_clusters.get(i))
 				writer.print(" " + s);
 		}

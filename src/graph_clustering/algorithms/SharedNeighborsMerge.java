@@ -12,6 +12,7 @@ import java.util.HashSet;
 
 public class SharedNeighborsMerge {
 	private static final String FILENAME = "assignment4_data.txt";
+	private static final String RESULT_FILENAME = "report_shared_neigbor_merge.txt";
 	private static final double TRESHOLD = 0.3;
 	private static HashMap<String, ArrayList<String>> graph;
 	private static HashMap<Integer, HashSet<String>> clusters = new HashMap<Integer, HashSet<String>>();
@@ -27,30 +28,34 @@ public class SharedNeighborsMerge {
 		initClusters();
 		initDistanceMatrix();
 		merge();
-		ReportPrinter.printReport(final_clusters, "report_shared_neigbor_merge.txt");
+		ReportPrinter.printReport(final_clusters, RESULT_FILENAME);
 
 		Instant endTime = Instant.now();
 		System.out.println(Duration.between(startTime, endTime));
 	}
 
 	static boolean merge() {
-		String a = null;
+		//most similar genes a and b
+		String a = null; 
 		String b = null;
+		//their cluster labels
 		int ai = 0;
 		int bj = 0;
 		do {
+			//find most similar
 			int[] result = findNextMostSimilar();
 			a = names.get(result[0]);
 			b = names.get(result[1]);
 			ai = findCluster(a);
 			bj = findCluster(b);
+			
 			// merge
-			//System.out.println(clusters.size());
 			HashSet<String> aCluster = new HashSet<String>(clusters.get(ai));
 			HashSet<String> bCluster = new HashSet<String>(clusters.get(bj));
 			clusters.get(ai).addAll(bCluster);
 			clusters.remove(bj);
 			removedNames.addAll(bCluster);
+			//if resulting cluster's density
 			if (density(clusters.get(ai)) < TRESHOLD) {
 				final_clusters.add(aCluster);
 				final_clusters.add(bCluster);
@@ -58,8 +63,7 @@ public class SharedNeighborsMerge {
 				removedNames.addAll(aCluster);
 				//System.out.print("clustered: " + a + " -> " + b + " size: ");
 				//System.out.println(aCluster.size() + bCluster.size());
-			} else{}
-				//System.out.println("removed: " + a + " -> " + b);
+			} 
 			System.out.print(Math.floor(10000 * (double)removedNames.size()/names.size())/100);
 			System.out.println(" %");
 		} while (clusters.size() > 1);
@@ -78,13 +82,12 @@ public class SharedNeighborsMerge {
 		HashSet<String> union = new HashSet<String>(intersection);
 		intersection.retainAll(graph.get(s2));
 		union.addAll(graph.get(s2));
-		return (double) intersection.size() / union.size();
-	}
-
-	static int union(String s1, String s2) {
-		HashSet<String> union = new HashSet<String>(graph.get(s1));
-		union.addAll(graph.get(s2));
-		return union.size();
+		double result;
+		if (intersection.size() > 0)
+			result = (double) intersection.size() / union.size();
+		else
+			result = union.size();
+		return result;
 	}
 
 	static double density(HashSet<String> subgraph) {

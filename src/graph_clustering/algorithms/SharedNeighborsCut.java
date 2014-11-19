@@ -12,6 +12,7 @@ import java.util.HashSet;
 
 public class SharedNeighborsCut {
 	private static final String FILENAME = "assignment4_data.txt";
+	private static final String RESULT_FILENAME = "report_shared_neigbor_cut.txt";
 	private static final double TRESHOLD = 0.3;
 	private static HashMap<String, ArrayList<String>> graph;
 	private static ArrayList<HashSet<String>> final_clusters = new ArrayList<HashSet<String>>();
@@ -23,7 +24,7 @@ public class SharedNeighborsCut {
 
 		graph = GraphInitializer.initGraph(FILENAME);
 		findDisconnectedSubgraphs();
-		ReportPrinter.printReport(final_clusters, "report_shared_neigbor_cut.txt");
+		ReportPrinter.printReport(final_clusters, RESULT_FILENAME);
 
 		Instant endTime = Instant.now();
 		System.out.println(Duration.between(startTime, endTime));
