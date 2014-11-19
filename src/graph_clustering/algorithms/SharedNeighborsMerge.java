@@ -74,15 +74,15 @@ public class SharedNeighborsMerge {
 	}
 
 	static double jaccard(String s1, String s2) {
-		ArrayList<String> intersection = new ArrayList<String>(graph.get(s1));
-		ArrayList<String> union = new ArrayList<String>(intersection);
-		intersection.removeAll(graph.get(s2));
+		HashSet<String> intersection = new HashSet<String>(graph.get(s1));
+		HashSet<String> union = new HashSet<String>(intersection);
+		intersection.retainAll(graph.get(s2));
 		union.addAll(graph.get(s2));
 		return (double) intersection.size() / union.size();
 	}
 
 	static int union(String s1, String s2) {
-		ArrayList<String> union = new ArrayList<String>(graph.get(s1));
+		HashSet<String> union = new HashSet<String>(graph.get(s1));
 		union.addAll(graph.get(s2));
 		return union.size();
 	}
