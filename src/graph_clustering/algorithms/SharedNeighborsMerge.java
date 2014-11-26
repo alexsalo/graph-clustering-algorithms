@@ -56,7 +56,9 @@ public class SharedNeighborsMerge {
 			clusters.remove(bj);
 			removedNames.addAll(bCluster);
 			//if resulting cluster's density
-			if (density(clusters.get(ai)) < TRESHOLD) {
+			
+			double d = density(clusters.get(ai));
+			if (d < TRESHOLD) {
 				final_clusters.add(aCluster);
 				final_clusters.add(bCluster);
 				clusters.remove(ai);
@@ -92,8 +94,11 @@ public class SharedNeighborsMerge {
 
 	static double density(HashSet<String> subgraph) {
 		double E = 0;
-		for (String s : subgraph)
-			E += graph.get(s).size();
+		for (String s : subgraph){
+			HashSet<String> links = new HashSet<String>(graph.get(s));
+			links.retainAll(subgraph);
+			E += links.size();
+		}
 		int V = subgraph.size();
 		return E / (V * (V - 1)); // edges already counted twice
 	}

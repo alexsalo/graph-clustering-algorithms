@@ -55,11 +55,11 @@ public class ReportPrinter {
 			e.printStackTrace();
 		}
 		//writer.print(final_clusters.size());
-		for (int i = 0; i < final_clusters.size(); i++) {
-			//writer.print("\n");
+		for (int i = 0; i < final_clusters.size(); i++) {			
 			//writer.print(final_clusters.get(i).size());
 			for (String s : final_clusters.get(i))
 				writer.print(" " + s);
+			writer.print("\n");
 		}
 		writer.close();
 	}
