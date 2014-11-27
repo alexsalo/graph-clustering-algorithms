@@ -45,6 +45,7 @@ public class GraphInitializer {
 			sc = new Scanner(s);
 			String s1 = sc.next();
 			String s2 = sc.next();
+			// TODO code duplicate, may need to take it to a sep function
 			// one way
 			if (graph.containsKey(s1)) {
 				graph.get(s1).add(s2);
