@@ -7,7 +7,7 @@ public class AccuracyEvaluator {
 	private static final String MERGE_RESULT_FILENAME = "report_shared_neigbor_merge.txt";
 	private static final String GROUND_TRUTH_FILENAME = "complex_merged.txt";	
 	private static final String GRAPH_ENTROPY_RESULT_FILENAME = "report_entropy.txt";
-	private static final String NOVEL_PARALLEL_SEED_GROWTH_RESULT_FILENAME = "report_entropy.txt";
+	private static final String NOVEL_PARALLEL_SEED_GROWTH_RESULT_FILENAME = "report_entropyParallel.txt";
 		
 	public static void main(String[] args) {
 		System.out.println(AccuracyGauge.fscore(CUT_RESULT_FILENAME, GROUND_TRUTH_FILENAME));
