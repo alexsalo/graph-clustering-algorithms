@@ -31,7 +31,7 @@ public class AccuracyGauge {
 
 	private static double fmeasure(HashSet<String> cluster,
 			HashSet<String> groundtruth) {
-		HashSet<String> intersection = new HashSet<>(cluster);
+		HashSet<String> intersection = new HashSet<String>(cluster);
 		intersection.retainAll(groundtruth);
 		double recall = (double) intersection.size() / groundtruth.size();
 		double precision = (double) intersection.size() / cluster.size();
