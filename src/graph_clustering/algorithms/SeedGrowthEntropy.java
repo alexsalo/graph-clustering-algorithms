@@ -505,7 +505,7 @@ public class SeedGrowthEntropy {
 				// System.out.print(cluster.getAllMembers().size() + " ");
 				for (String node : cluster.getAllMembers()) {
 					// System.out.print(node + " ");
-					writer.write(node + " ");
+					writer.write(" " + node);
 				}
 				counter++;
 				writer.write(System.lineSeparator());
