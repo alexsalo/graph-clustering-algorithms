@@ -120,12 +120,24 @@ public class SharedNeighborsMerge {
 		ArrayList<Integer> indicies = getIndices();
 		for (int i : indicies)
 			for (int j : indicies)
-				if (j > i && distanceMatix[i][j] > max
+				if (j > i && distanceMatix[i][j] <= 1  
+						&& distanceMatix[i][j] > max
 						&& !isTheSameCluster(names.get(i), names.get(j))) {
 					max = distanceMatix[i][j];
 					imax = i;
 					jmax = j;
 				}
+		if (imax == 0 || jmax == 0){
+			double minunion = Double.MAX_VALUE;
+			for (int i : indicies)
+				for (int j : indicies)
+					if (j > i && distanceMatix[i][j] > 1
+							&& distanceMatix[i][j] < minunion){
+						minunion = distanceMatix[i][j];
+						imax = i;
+						jmax = j;
+					}
+		}
 		return new int[] { imax, jmax };
 	}
 
