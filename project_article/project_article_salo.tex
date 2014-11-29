@@ -47,7 +47,7 @@ TX, 76706 USA}% <-this % stops a space
 
 
 % The paper headers
-\markboth{Baylor University, December~2013}%
+\markboth{Baylor University, December~2014}%
 {Graph Clustering Algorithms}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
@@ -112,10 +112,106 @@ datamining, graphs, algorithms, bioinformatics
 
 
 \section{Introduction}
-\blindtext
+As a basis for the future comparison we implemented three different graph clustering algorithms:
+\begin{enumerate}
+	\item Common Neighbors Cut
+	\item Common Neighbors Merge
+	\item Seed Growth: Graph Entropy
+\end{enumerate}
 
-\subsection{Subsection Heading Here}
-\blindtext
+Text file describing all the edges of the graph was used as an input. Basic characteristics of the graph are following:
+\begin{enumerate}
+	\item Unweighted
+	\item Disconnected 
+	\item Undirected
+	\item Size ($|V|$) = 2526
+	\item Edges ($|E|$) = 11450
+	\item Density = 0.00179
+\end{enumerate}
+
+Let us know highlight the main ideas of implemented algorithms.
+
+\subsection{Common Neighbors Cut}
+This top-down hierarchical method generates non-overlapping clusters recursively dividing the initial graph using dissimilarity measure. The main idea is: "Less common neighbors two vertices share, more dissimilar they are." [1]
+
+Algorithm [3]:
+\begin{enumerate}
+	\item Iteratively eliminate the edge between the most dissimilar vertices
+	based on a similarity function, until the graph is separated
+	\item Recursively apply (1) into each subgraph
+	\item Repeat (1) and (2) until all subgraphs reach a density threshold
+\end{enumerate}
+
+The main time consuming operation in the algorithm that repeatedly occurs is defining whether the graph is still connected (after removing the edge between two most dissimilar vertices) or not. Our implementation uses depth-first-search algorithm (which is very efficient) for deciding this question. 
+
+\subsection{Common Neighbors Merge}
+This algorithm is a mirrored brother of the previous one. Instead of recursively dividing the graph we initiate each node of the graph as a separate cluster. Then we merge most similar nodes until threshold value is violated. So the main idea is: "More common neighbors two vertices share, more similar they are." [2]
+
+Algorithm [3]:
+\begin{enumerate}
+	\item Find the most similar vertices from different clusters based on a similarity
+	function
+	\item Merge the two clusters if the merged cluster reaches a density threshold
+	\item Repeat (1) and (2) until no more clusters can be merged
+\end{enumerate}
+
+In order to avoid ~O($n^4$) calculation of the most similar nodes among all the clusters we initially calculate the table of distances for each pair of nodes and then look for the most relevant values.  
+
+\subsection{Seed Growth: Graph Entropy}
+This algorithm is a typical density-based algorithm which produces overlapping clusters via seed growth. The main idea is: "Search for local optimization using a modularity (density) function." [4]
+
+Algorithm [3]:
+\begin{enumerate}
+	\item Select a seed node among free vertices, and include all neighbors of the seed node into a seed cluster
+	\item Iteratively remove a neighbor if removal decreases graph entropy
+	\item Iteratively add a node on the outer boundary of a current cluster if addition decreases graph entropy
+	\item Output the cluster with the minimal graph entropy
+	\item Repeat (1), (2), (3), and (4) until no seed node remains
+\end{enumerate}
+
+Here entropy is a density measure (computable in ~O($|V|$) time) based on probabilities of having inner or outer links. Seed selection is based on the vertex degree: the more degree is the more chances that the vertex would be a good seed.
+
+Clearly, this algorithm runs very fast since it doesn't use recursion or nested loops among all the vertices.
+
+\subsection{Implementation notes}
+For all our algorithms we used the arbitrary chosen threshold value of 0.3. Also we tried to treat algorithms the same way and implement them using the same data structures (however authors of original papers used slightly different implementation). 
+
+Our estimation is that the following tests should reflect the real measure of performance and accuracy.
+
+
+
+\section{Performance and Accuracy Comparison}
+For evaluation of accuracy we used the f-measure to evaluate the clustering results by comparing to protein complex data (ground truth), where f-measure is a harmonic mean of \textit{recall} and \textit{precision}:
+\begin{center}
+	f-measure = $\frac{2 * recall * precision}{recall + precision} $,\\	
+\end{center} 
+Recall (Sensitivity or True positive rate) = $\frac{|X \cap Y|}{|Y|}$\\
+Precision (Positive predictive value) =  $\frac{|X \cap Y|}{|X|}$
+
+Computing f-measure for the algorithm's accuracy is a three step process:\\
+1. Compute all the f-scores for each resulting cluster.\\
+2. Assign maximum f-score to each cluster.\\
+3. Take average f-score as an f-measure of the algorithm's accuracy. 
+
+Hereby accuracy could vary from 100\% (each of the resulting clusters are in the ground truth clusters) to 0\% (none of them fit).
+
+Runtime is simply an execution time in seconds.
+
+\includegraphics[width=3.4in,clip,keepaspectratio]{perfomance-comparison}
+
+Clearly, graph entropy algorithm is by far the fastest. However common neighbors merge perform slightly better results yet more efficient than common neighbors cut. 
+
+\subsection{Distance measure}
+While common neighbors merge algorithm produces good performance the accuracy could be varied with the use of different distant measures. Below we plot the accuracy for each of the following distance measures:
+\begin{itemize}
+	\item Jaccard Coefficient $S(x,y)=\dfrac{|N(x) \cap N(y)|}{|N(x) \cup N(y)|}$
+	\item Maryland Bridge $S(x,y)=\dfrac{1}{2} (\dfrac{|N(x) \cap N(y)|}{|N(x)|} + \dfrac{|N(x) \cap N(y)|}{|N(y)|})$
+	\item Dice $S(x,y)=\dfrac{2|N(x) \cap N(y)|}{|N(x)| + |N(y)|}$
+	\item Simpson $S(x,y)=\dfrac{|N(x) \cap N(y)|}{min(|N(x)|, |N(y)|)}$
+	\item Geometric $S(x,y)=\dfrac{|N(x) \cap N(y)|^2}{|N(x)| |N(y)|}$
+\end{itemize}
+
+\includegraphics[width=3.4in,clip,keepaspectratio]{distance-measures}
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
@@ -268,10 +364,15 @@ The $\Sigma$ authors would like to thank...
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
+ 
+\bibitem{IEEEhowto:Radicchi}Radicchi, Filippo, Claudio Castellano, Federico Cecconi, Vittorio Loreto, and Domenico Parisi. “Defining and Identifying Communities in Networks.” Proceedings of the National Academy of Sciences of the United States of America 101, no. 9 (March 2, 2004): 2658–63. doi:10.1073/pnas.0400054101.
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{IEEEhowto:Brun}
+Brun, Christine, Carl Herrmann, and Alain Guénoche. “Clustering Proteins from Interaction Networks for the Prediction of Cellular Functions.” BMC Bioinformatics 5, no. 1 (July 13, 2004): 95. doi:10.1186/1471-2105-5-95.
+
+\bibitem{IEEEhowto:Cho} Cho, Young-Rae. "CSI 4352, Introduction to Data Mining." 10/16/2014 (n.d.): n. pag. Web.
+
+\bibitem{IEEEhowto:Cho} Chiam, Tak C., and Young-Rae Cho. “Accuracy Improvement in Protein Complex Prediction from Protein Interaction Networks by Refining Cluster Overlaps.” Proteome Science 10, no. Suppl 1 (June 21, 2012): S3. doi:10.1186/1477-5956-10-S1-S3.
 
 \end{thebibliography}
 
