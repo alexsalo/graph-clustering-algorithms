@@ -52,12 +52,31 @@ We thoght of two ways to avoid computation of duplicate clusters. One was to dis
 Analysis - Rov
 Conclusion - Rov
 
+		System.out.println(AccuracyGauge.fscore(CUT_RESULT_FILENAME, GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore(MERGE_RESULT_FILENAME, GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore(GRAPH_ENTROPY_RESULT_FILENAME, GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore(NOVEL_PARALLEL_SEED_GROWTH_RESULT_FILENAME, GROUND_TRUTH_FILENAME));
+		
+		//test
+		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_maryland.txt", GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_dice.txt", GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_simpson.txt", GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_geometric.txt", GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore(GROUND_TRUTH_FILENAME, GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_entropy.txt", GROUND_TRUTH_FILENAME));
 
-shared_neigbor_cut	0.06413612565445026
-shared_neigbor_merge	0.05295821266032272
-density based entropy	0.4733787143858799
-NOVEL_PARALLEL_SEED_GROWTH_RESULT_FILENAME	0.5004199431804587
-HIER_TOWPDOWN_FILENAME cut 	0.47806622734479554
+
+0.4858304754829227
+0.5316225767880698
+0.4733787143858799
+0.5087573479441129
+0.504424065140093
+0.5316225767880698
+0.5018754837522917
+0.5104550399961836
+1.0
+0.5062311235210514
+
 
 
 
