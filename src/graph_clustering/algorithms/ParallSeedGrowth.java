@@ -10,12 +10,14 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -23,6 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParallSeedGrowth {
 	
@@ -31,7 +34,7 @@ public class ParallSeedGrowth {
 	private static Map<String, ArrayList<String>> graph;
 	// if less seeds available, will be slower
 	// adjust the number of parallel cluster computations to improve performance
-	private static final int NUMB_PARALL_CLUSTERS = 100;
+	private static int NUMB_PARALL_CLUSTERS = 100;
 	private final ExecutorService tPool;
 
 	public static class Seed {
@@ -55,9 +58,9 @@ public class ParallSeedGrowth {
 		 * This object is synchronized to check if it contains the seed we are
 		 * adding, synchronization ensures only one thread will look at and make
 		 * decision based on its state and will modify the seeds to process set
-		 * to exclude its seed that it will stop processing. The idea is if
-		 * another seed that was plan to grow into already a seed for another
-		 * cluster, this cluster would be part of that cluster in organic way.
+		 * to exclude its seed that it will stop processing. The idea is: if
+		 * s new node being added to the cluster is already a seed for another
+		 * cluster, this cluster would be part of that cluster in an organic way (by seed growth).
 		 */
 		private final Set<String> seedsToProcess;
 		private final CountDownLatch startSignal;
@@ -391,12 +394,14 @@ public class ParallSeedGrowth {
 	 * Compute clusters for the graph.
 	 * 
 	 * @param adjList
+	 * @param numbOfClusters 
 	 * @return
 	 * @throws ExecutionException 
 	 * @throws InterruptedException 
 	 */
-	public List<Cluster> computeGraphClusters(Map<String, ArrayList<String>> adjList) throws InterruptedException, ExecutionException {		
+	public List<Cluster> computeGraphClusters(Map<String, ArrayList<String>> adjList, int numbOfClusters) throws InterruptedException, ExecutionException {		
 		List<Cluster> allClusters = new ArrayList<>();
+		NUMB_PARALL_CLUSTERS = numbOfClusters;
 		boolean seedSelected = false;
 		Integer clusterId = 1;
 		// a set of all protein ids that could be seeds		
@@ -447,6 +452,7 @@ public class ParallSeedGrowth {
 			}
 		} while (seedSelected);
 		shutdownAndAwaitTermination(tPool);
+		System.out.println("All cluster sizes: " + allClusters.size());
 		return allClusters;
 	}
 
@@ -674,14 +680,22 @@ public class ParallSeedGrowth {
 			return;
 		}
 		Collections.sort(clusters);
-		@SuppressWarnings("unused")
+		Map<Integer, AtomicInteger> sizeCount = new TreeMap<Integer, AtomicInteger>();
 		int counter = 0;
-		try (Writer writer = new BufferedWriter(new FileWriter(resultFilename))) {			
+		try (Writer writer = new BufferedWriter(new FileWriter(resultFilename))) {	
+			System.out.print("Cluster sizes: ");
 			for (Cluster cluster : clusters) {
 				if (cluster.getAllMembers().size() < 3) {
 					continue;
 				}
-				// System.out.print(cluster.getAllMembers().size() + " ");
+				Integer currClusterSize = cluster.getAllMembers().size();
+				//System.out.print(cluster.getAllMembers().size() + " ");
+				if(sizeCount.get(currClusterSize) == null){
+					AtomicInteger count = new AtomicInteger(1);
+					sizeCount.put(currClusterSize , count);
+				}else{
+					sizeCount.get(currClusterSize).incrementAndGet();
+				}
 				for (String node : cluster.getAllMembers()) {
 					// System.out.print(node + " ");
 					writer.write(" " + node);
@@ -690,12 +704,13 @@ public class ParallSeedGrowth {
 				writer.write(System.lineSeparator());
 				// System.out.println();
 			}
+			System.out.println(sizeCount);
 			writer.flush();
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
 		//System.out.println("Cluster count for each size, s.t. size => count");
-		//System.out.println("Total clusters: " + counter);
+		System.out.println("Total clusters: " + counter);
 	}
 	
 	public static void main(String[] args) {
@@ -703,13 +718,12 @@ public class ParallSeedGrowth {
 		// different processing - process seeds in parallel		
 		// prove of concept and soundness
 		Instant startTime = Instant.now();
-
+		//int numbOfClusters = Integer.parseInt(args[0]);
 		graph = GraphInitializer.initGraph(FILENAME);
-		System.out.println(graph);
 		ParallSeedGrowth entropy = new ParallSeedGrowth();
 		List<Cluster> final_clusters = null;
 		try {
-			final_clusters = entropy.computeGraphClusters(graph);
+			final_clusters = entropy.computeGraphClusters(graph, NUMB_PARALL_CLUSTERS);
 		} catch (InterruptedException | ExecutionException e) {
 			System.err.println("Problem computing clusters" + e.getMessage());
 			e.printStackTrace();
@@ -718,7 +732,6 @@ public class ParallSeedGrowth {
 														// list of clusters
 
 		Instant endTime = Instant.now();
-		System.out.println(Duration.between(startTime, endTime)
-				+ entropy.getClass().getName());
+		System.out.println("Run time millisec: " + Duration.between(startTime, endTime).toMillis());
 	}
 }
