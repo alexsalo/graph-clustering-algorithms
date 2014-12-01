@@ -1,0 +1,80 @@
+Intro - Alex
+Methods - Alex
+
+Novel algo - Rov
+
+We took Seed growth algorithm, which is based on the density and uses enthropy for growing the seed and we have added a new parameter to it and then parallelized it.
+
+The new parameter defines number of parallel cluster computations and by twiking that number we got different performance. We compared the performance of the new algorithm to the original algorithm. The parallelized algorithm performed better both speedwise and accuracy wise as we can see from the graphs.
+
+
+Benefits of the proposed algorithm
+
+-The algorithm allows faster processing. More clusters can be computed at the same time and potentially on different machines. The algorithm could be used to process parts of the huge graph using parallel systems like Hadoop's Mapreduce.
+
+
+Drawbacks of the proposed algorithm
+
+-If the number of cluster is very small one or two, the proposed algorithm will not give significant benefit compared to the original algorithm and could be slower.
+
+-For the case of one large cluster, the algorithm will perform as if it was not parallel and will produce many identical clusters.
+			 
+Two ways to deal with it:
+
+1) prevent expanding of one cluster into another by stopping expansion of one of the clusters,
+
+2) remove one of the duplicate clusters.
+
+We have decided to go with the first approach. If the clusters are huge that will save computation time by reducing unnecessary seed growth for duplicate clusters.
+
+Note: The N clusters are computed in parallel, yet if some computations yield before others, we do not process new seeds, until all N clusters were processed. The reason for that is to minimize seed selection complexity and avoid unnecessary dependencies between previously selected N cluster computation.
+
+We also rely on the fact that the other N seeds that will be selected will not include vertices that are already part of the previously computed N clusters. This is a valid assumption as the cluster members are removed from the seed candidate list for the next N seed computatio
+
+
+Check if the vertex being added already is a seed and if so stop processing of this cluster.
+
+One of the neighbors of this seed is a seed we process in parallel. Stop processing this seed and remove it from concurrently processing seeds.
+
+
+Algo description:
+
+Cluster consists of seed and its neighbors. One node may be in more than one cluster for density based clustering. Cluster also can have Graph Entropy.
+
+We select seed to be processed in parallel from the higherst degree seed first. As we select N seeds, we make sure that all seeds are unique by storing them as a set.
+
+We have introduced the new step in the algorithm where the clusters are created and grown from the seed in a separate thread. 
+Since we add parallel cluster generatation, we need to keep track of the cluster generation, such that there are no same clusters. For example, two neigboring clusters can grow into each other if they are part of one bigger cluster. Thus, when the two clusters will be build, they both would be grown into the bigger cluster and will have the same cluster members.
+
+We thoght of two ways to avoid computation of duplicate clusters. One was to discard duplicate cluster after processing N seeds and growing them into clusters. Another proposed solution to the above problem was to add a check to the seed growth of each cluster. The check is done to see if the member being added is also is one of the seeds being processed or not. Note that the check only done if the addition of the new node would decrease entropy of that cluster. If the new member is a one of the seeds being grown that meens two clusters will merge two times creating a duplicate. To avoid that we stop processing of the first cluster, where we tried to add the new member and we remove the seed of that cluster from the seeds being processed. Note that the number of parallel seeds being processed depends on the N, new algorithm attribute.
+
+
+Analysis - Rov
+Conclusion - Rov
+
+
+shared_neigbor_cut	0.06413612565445026
+shared_neigbor_merge	0.05295821266032272
+density based entropy	0.4733787143858799
+NOVEL_PARALLEL_SEED_GROWTH_RESULT_FILENAME	0.5004199431804587
+HIER_TOWPDOWN_FILENAME cut 	0.47806622734479554
+
+
+
+also we could notice, when we change the number of the clusters processed in parallel, the accuracy of the algorithm would change.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
