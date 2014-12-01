@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.27)  28 NOV 2014 19:41
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.27)  29 NOV 2014 10:00
 entering extended mode
 **project_article_salo.tex
 
@@ -537,36 +537,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
 
 ]
-<perfomance-comparison.png, id=15, 481.8pt x 290.08376pt>
+<f-measure.png, id=15, 585.18625pt x 409.53pt>
+File: f-measure.png Graphic file (type png)
+ <use f-measure.png>
+Package pdftex.def Info: f-measure.png used on input line 197.
+(pdftex.def)             Requested size: 245.71754pt x 171.96393pt.
+
+Underfull \hbox (badness 5756) in paragraph at lines 196--198
+[]\OT1/ptm/m/n/10 The pro-cess also de-scribed by the pic-ture be-low:
+ []
+
+<perfomance-comparison.png, id=18, 481.8pt x 290.08376pt>
 File: perfomance-comparison.png Graphic file (type png)
 
 <use perfomance-comparison.png>
-Package pdftex.def Info: perfomance-comparison.png used on input line 200.
+Package pdftex.def Info: perfomance-comparison.png used on input line 203.
 (pdftex.def)             Requested size: 245.71754pt x 147.94075pt.
 
-Overfull \hbox (3.71754pt too wide) in paragraph at lines 200--201
+Overfull \hbox (3.71754pt too wide) in paragraph at lines 203--204
 [][] 
  []
 
 
-Underfull \hbox (badness 3108) in paragraph at lines 208--209
+Underfull \hbox (badness 3108) in paragraph at lines 211--212
 []\OT1/ptm/m/n/10 Maryland Bridge $\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/
 m/it/10 x; y\OT1/cmr/m/n/10 ) = []([] +$
  []
 
-<distance-measures.png, id=18, 482.80376pt x 290.08376pt>
+<distance-measures.png, id=20, 482.80376pt x 290.08376pt>
 File: distance-measures.png Graphic file (type png)
 
 <use distance-measures.png>
-Package pdftex.def Info: distance-measures.png used on input line 214.
+Package pdftex.def Info: distance-measures.png used on input line 217.
 (pdftex.def)             Requested size: 245.71754pt x 147.63533pt.
 
-Overfull \hbox (3.71754pt too wide) in paragraph at lines 214--215
+Overfull \hbox (3.71754pt too wide) in paragraph at lines 217--218
 [][] 
  []
-
-
-Underfull \vbox (badness 1024) has occurred while \output is active []
 
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
@@ -578,13 +585,13 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 
-Underfull \hbox (badness 1418) in paragraph at lines 368--369
+Underfull \hbox (badness 1418) in paragraph at lines 373--374
 \OT1/ptm/m/n/8 works. Pro-ceed-ings of the Na-tional Academy of Sci-ences of th
 e
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 368--369
+Underfull \hbox (badness 1584) in paragraph at lines 373--374
 \OT1/ptm/m/n/8 United States of Amer-ica 101, no. 9 (March 2, 2004): 265863.
  []
 
@@ -602,19 +609,20 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[2 <C:/github/graph-clustering-algorithms/project_article/perfomance-comparison
-.png> <C:/github/graph-clustering-algorithms/project_article/distance-measures.
-png>] <picture.png, id=30, 84.315pt x 98.3675pt>
+[2 <C:/github/graph-clustering-algorithms/project_article/f-measure.png> <C:/gi
+thub/graph-clustering-algorithms/project_article/perfomance-comparison.png> <C:
+/github/graph-clustering-algorithms/project_article/distance-measures.png>]
+<picture.png, id=34, 84.315pt x 98.3675pt>
 File: picture.png Graphic file (type png)
  <use picture.png>
-Package pdftex.def Info: picture.png used on input line 390.
+Package pdftex.def Info: picture.png used on input line 395.
 (pdftex.def)             Requested size: 72.27145pt x 84.3167pt.
 File: picture.png Graphic file (type png)
-
-<use picture.png>
-Package pdftex.def Info: picture.png used on input line 390.
+ <use picture.png>
+Package pdftex.def Info: picture.png used on input line 395.
 (pdftex.def)             Requested size: 72.27145pt x 84.3167pt.
- [3
+
+[3
 
  <C:/github/graph-clustering-algorithms/project_article/picture.png>]
 (C:\github\graph-clustering-algorithms\project_article\project_article_salo.aux
@@ -624,10 +632,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11137 strings out of 493921
- 207121 string characters out of 3147285
+ 11142 strings out of 493921
+ 207205 string characters out of 3147285
  249092 words of memory out of 3000000
- 14225 multiletter control sequences out of 15000+200000
+ 14229 multiletter control sequences out of 15000+200000
  36891 words of font info for 72 fonts, out of 3000000 for 9000
  844 hyphenation exceptions out of 8191
  56i,10n,55p,749b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -641,9 +649,9 @@ cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on project_article_salo.pdf (3 pages, 154221 bytes).
+Output written on project_article_salo.pdf (3 pages, 179626 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 74 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 52 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

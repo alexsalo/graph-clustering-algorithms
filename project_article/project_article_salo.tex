@@ -188,10 +188,13 @@ For evaluation of accuracy we used the f-measure to evaluate the clustering resu
 Recall (Sensitivity or True positive rate) = $\frac{|X \cap Y|}{|Y|}$\\
 Precision (Positive predictive value) =  $\frac{|X \cap Y|}{|X|}$
 
-Computing f-measure for the algorithm's accuracy is a three step process:\\
-1. Compute all the f-scores for each resulting cluster.\\
-2. Assign maximum f-score to each cluster.\\
-3. Take average f-score as an f-measure of the algorithm's accuracy. 
+Computing f-scores for the algorithm's accuracy is a three step process:\\
+1. Compute all the f-measures for each resulting cluster.\\
+2. Assign maximum f-measures to each cluster.\\
+3. Take average f-measures as an f-score of the algorithm's accuracy. 
+
+The process also described by the picture below:
+\includegraphics[width=3.4in,clip,keepaspectratio]{f-measure}
 
 Hereby accuracy could vary from 100\% (each of the resulting clusters are in the ground truth clusters) to 0\% (none of them fit).
 
@@ -200,6 +203,12 @@ Runtime is simply an execution time in seconds.
 \includegraphics[width=3.4in,clip,keepaspectratio]{perfomance-comparison}
 
 Clearly, graph entropy algorithm is by far the fastest. However common neighbors merge perform slightly better results yet more efficient than common neighbors cut. 
+
+\subsection{Accuracy measure critique}
+Although proposed accuracy measurement gives a good premise for comparing the algorithms it has somewhat serious lack: it biased toward the algorithms which produce the small number of clusters. Less cluster in the output - easier to fit them into ground truth. At the same time less clusters could mean a loss of opportunities with the real biological value. 
+
+Below we provide a plot with number of clusters produced by different algorithms:
+
 
 \subsection{Distance measure}
 While common neighbors merge algorithm produces good performance the accuracy could be varied with the use of different distant measures. Below we plot the accuracy for each of the following distance measures:
@@ -212,6 +221,8 @@ While common neighbors merge algorithm produces good performance the accuracy co
 \end{itemize}
 
 \includegraphics[width=3.4in,clip,keepaspectratio]{distance-measures}
+
+Clearly, for this specific dataset of protein-protein interaction Jaccard Coefficient measure works the best.
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol

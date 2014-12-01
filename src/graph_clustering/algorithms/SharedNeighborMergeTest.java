@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map.Entry;
 
 public class SharedNeighborMergeTest {
 	private static final String FILENAME = "assignment4_data.txt";
-	private static final String RESULT_FILENAME = "report_shared_neigbor_merge_dice.txt";
+	private static final String RESULT_FILENAME = "report_shared_neigbor_merge_entropy.txt";
 	private static final double TRESHOLD = 0.3;
 	private static HashMap<String, ArrayList<String>> graph;
 	private static HashMap<Integer, HashSet<String>> clusters = new HashMap<Integer, HashSet<String>>();
@@ -26,57 +27,69 @@ public class SharedNeighborMergeTest {
 
 		graph = GraphInitializer.initGraph(FILENAME);
 		System.out.println(graph.size());
-		
-		double E = 0;
-		for (String s : graph.keySet()){
-			E += graph.get(s).size();
-		}
-		int V = graph.size();
-		System.out.println(E / (V * (V - 1)));
-		System.out.println(E);
-		//initClusters();
-		//initDistanceMatrix();
-		//merge();
-		//ReportPrinter.printReport(final_clusters, RESULT_FILENAME);
+
+		initClusters();
+		initDistanceMatrix();
+		merge();
+		ReportPrinter.printReport(final_clusters, RESULT_FILENAME);
 
 		Instant endTime = Instant.now();
 		System.out.println(Duration.between(startTime, endTime));
 	}
 
 	static boolean merge() {
-		//most similar genes a and b
-		String a = null; 
+		// most similar genes a and b
+		String a = null;
 		String b = null;
-		//their cluster labels
+		// their cluster labels
 		int ai = 0;
 		int bj = 0;
 		do {
-			//find most similar
+			// find most similar
 			int[] result = findNextMostSimilar();
 			a = names.get(result[0]);
 			b = names.get(result[1]);
 			ai = findCluster(a);
 			bj = findCluster(b);
-			
-			// merge
-			HashSet<String> aCluster = new HashSet<String>(clusters.get(ai));
-			HashSet<String> bCluster = new HashSet<String>(clusters.get(bj));
-			clusters.get(ai).addAll(bCluster);
-			clusters.remove(bj);
-			removedNames.addAll(bCluster);
-			//if resulting cluster's density
-			
-			double d = density(clusters.get(ai));
-			if (d < TRESHOLD) {
-				final_clusters.add(aCluster);
-				final_clusters.add(bCluster);
-				clusters.remove(ai);
-				removedNames.addAll(aCluster);
-				//System.out.print("clustered: " + a + " -> " + b + " size: ");
-				//System.out.println(aCluster.size() + bCluster.size());
-			} 
-			System.out.print(Math.floor(10000 * (double)removedNames.size()/names.size())/100);
-			System.out.println(" %");
+
+			// entropy
+			double initEntropy = 0;
+			if (removedNames.size() < 2525) {
+				initEntropy = gEntropy(ai);
+
+				// merge
+				HashSet<String> aCluster = new HashSet<String>(clusters.get(ai));
+				HashSet<String> bCluster = new HashSet<String>(clusters.get(bj));
+				clusters.get(ai).addAll(bCluster);
+				clusters.remove(bj);
+				removedNames.addAll(bCluster);
+
+				// if entorpy increased - revert
+				double newEntropy = gEntropy(ai);
+				if (newEntropy < initEntropy) {
+					clusters.get(ai).retainAll(aCluster);
+					clusters.put(bj, bCluster);
+					System.out.println("revert changes");
+				} else {
+					// if resulting cluster's density
+					double d = density(clusters.get(ai));
+					if (d < TRESHOLD) {
+						final_clusters.add(aCluster);
+						final_clusters.add(bCluster);
+						clusters.remove(ai);
+						removedNames.addAll(aCluster);
+						// System.out.print("clustered: " + a + " -> " + b +
+						// " size: ");
+						// System.out.println(aCluster.size() +
+						// bCluster.size());
+					}
+					System.out
+							.print(Math.floor(10000
+									* (double) removedNames.size()
+									/ names.size()) / 100);
+					System.out.println(" %");
+				}
+			}else break;
 		} while (clusters.size() > 1);
 
 		return true;
@@ -88,15 +101,14 @@ public class SharedNeighborMergeTest {
 			clusters.put(i++, new HashSet<String>(Arrays.asList(key)));
 	}
 
-	static double MarylandBridge(String s1, String s2) {
+	static double jaccard(String s1, String s2) {
 		HashSet<String> intersection = new HashSet<String>(graph.get(s1));
 		HashSet<String> union = new HashSet<String>(intersection);
 		intersection.retainAll(graph.get(s2));
 		union.addAll(graph.get(s2));
 		double result;
 		if (intersection.size() > 0)
-			result = (double) 2 * intersection.size() / 
-				(graph.get(s1).size() + graph.get(s2).size());
+			result = (double) intersection.size() / union.size();
 		else
 			result = union.size();
 		return result;
@@ -104,7 +116,7 @@ public class SharedNeighborMergeTest {
 
 	static double density(HashSet<String> subgraph) {
 		double E = 0;
-		for (String s : subgraph){
+		for (String s : subgraph) {
 			HashSet<String> links = new HashSet<String>(graph.get(s));
 			links.retainAll(subgraph);
 			E += links.size();
@@ -119,7 +131,7 @@ public class SharedNeighborMergeTest {
 		distanceMatix = new double[N][N];
 		for (int i = 0; i < N - 1; i++)
 			for (int j = i + 1; j < N; j++)
-				distanceMatix[i][j] = MarylandBridge(names.get(i), names.get(j));
+				distanceMatix[i][j] = jaccard(names.get(i), names.get(j));
 		System.out.println("matrix initiated");
 	}
 
@@ -130,19 +142,19 @@ public class SharedNeighborMergeTest {
 		ArrayList<Integer> indicies = getIndices();
 		for (int i : indicies)
 			for (int j : indicies)
-				if (j > i && distanceMatix[i][j] <= 1  
+				if (j > i && distanceMatix[i][j] <= 1
 						&& distanceMatix[i][j] > max
 						&& !isTheSameCluster(names.get(i), names.get(j))) {
 					max = distanceMatix[i][j];
 					imax = i;
 					jmax = j;
 				}
-		if (imax == 0 || jmax == 0){
+		if (imax == 0 || jmax == 0) {
 			double minunion = Double.MAX_VALUE;
 			for (int i : indicies)
 				for (int j : indicies)
 					if (j > i && distanceMatix[i][j] > 1
-							&& distanceMatix[i][j] < minunion){
+							&& distanceMatix[i][j] < minunion) {
 						minunion = distanceMatix[i][j];
 						imax = i;
 						jmax = j;
@@ -174,5 +186,30 @@ public class SharedNeighborMergeTest {
 				return c;
 		return -1;
 	}
-}
 
+	private static double log2(double x) {
+		return Math.log(x) / Math.log(2);
+	}
+
+	private static double vEntropy(String name, int clustid) {
+		HashSet<String> cluster = new HashSet<String>(clusters.get(clustid));
+		int i = 0;
+		for (String s : graph.get(name))
+			if (cluster.contains(s))
+				i++;
+		double pi = (double) i / graph.get(name).size();
+		double po = 1 - pi;
+		return (pi == 0 || po == 0) ? 0 : -pi * log2(pi) - po * log2(po);
+	}
+
+	public static double gEntropy(int clustid) {
+		double gentropy = 0;
+		HashSet<String> entropySet = new HashSet<String>();
+		for (String s : clusters.get(clustid))
+			entropySet.addAll(graph.get(s));
+		for (String s : entropySet) {
+			gentropy += vEntropy(s, clustid);
+		}
+		return gentropy;
+	}
+}

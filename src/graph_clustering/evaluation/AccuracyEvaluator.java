@@ -20,6 +20,8 @@ public class AccuracyEvaluator {
 		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_dice.txt", GROUND_TRUTH_FILENAME));
 		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_simpson.txt", GROUND_TRUTH_FILENAME));
 		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_geometric.txt", GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore(GROUND_TRUTH_FILENAME, GROUND_TRUTH_FILENAME));
+		System.out.println(AccuracyGauge.fscore("report_shared_neigbor_merge_entropy.txt", GROUND_TRUTH_FILENAME));
 	}
 
 }
