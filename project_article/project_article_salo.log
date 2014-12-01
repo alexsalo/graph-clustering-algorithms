@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.27)  30 NOV 2014 21:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.27)  30 NOV 2014 22:14
 entering extended mode
 **project_article_salo.tex
 
@@ -603,41 +603,62 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip47
 )
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\english.ldf"
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count152
+\U@D=\dimen175
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
 (C:\github\graph-clustering-algorithms\project_article\project_article_salo.aux
 
 LaTeX Warning: Label `IEEEhowto:Cho' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
  ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count152
-\scratchdimen=\dimen175
+\scratchcounter=\count153
+\scratchdimen=\dimen176
 \scratchbox=\box38
-\nofMPsegments=\count153
-\nofMParguments=\count154
+\nofMPsegments=\count154
+\nofMParguments=\count155
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count155
-\MPscratchDim=\dimen176
-\MPnumerator=\count156
-\makeMPintoPDFobject=\count157
+\MPscratchCnt=\count156
+\MPscratchDim=\dimen177
+\MPnumerator=\count157
+\makeMPintoPDFobject=\count158
 \everyMPtoPDFconversion=\toks32
 ) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box39
-Package hyperref Info: Link coloring OFF on input line 14.
+Package hyperref Info: Link coloring OFF on input line 15.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -645,27 +666,27 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count158
+\c@section@level=\count159
 )
-LaTeX Info: Redefining \ref on input line 14.
-LaTeX Info: Redefining \pageref on input line 14.
-LaTeX Info: Redefining \nameref on input line 14.
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
 
 (C:\github\graph-clustering-algorithms\project_article\project_article_salo.out
 )
 (C:\github\graph-clustering-algorithms\project_article\project_article_salo.out
 )
 \@outlinefile=\write4
-LaTeX Font Info:    Try loading font information for U+msa on input line 130.
+LaTeX Font Info:    Try loading font information for U+msa on input line 129.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 130.
+LaTeX Font Info:    Try loading font information for U+msb on input line 129.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 []\OT1/ptm/m/n/10 This top-down hi-er-ar-chi-cal method gen-er-ates non-
  []
 
@@ -673,68 +694,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
 
 ]
-<f-measure.png, id=94, 585.18625pt x 409.53pt>
+<f-measure.png, id=93, 585.18625pt x 409.53pt>
 File: f-measure.png Graphic file (type png)
  <use f-measure.png>
-Package pdftex.def Info: f-measure.png used on input line 200.
+Package pdftex.def Info: f-measure.png used on input line 211.
 (pdftex.def)             Requested size: 245.71754pt x 171.96393pt.
 
-Underfull \hbox (badness 5756) in paragraph at lines 199--201
-[]\OT1/ptm/m/n/10 The pro-cess also de-scribed by the pic-ture be-low:
- []
-
-<perfomance-comparison.png, id=97, 481.8pt x 290.08376pt>
+<perfomance-comparison.png, id=96, 481.8pt x 290.08376pt>
 File: perfomance-comparison.png Graphic file (type png)
 
 <use perfomance-comparison.png>
-Package pdftex.def Info: perfomance-comparison.png used on input line 206.
+Package pdftex.def Info: perfomance-comparison.png used on input line 222.
 (pdftex.def)             Requested size: 245.71754pt x 147.94075pt.
 
-Overfull \hbox (3.71754pt too wide) in paragraph at lines 206--207
-[][] 
- []
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 3108) in paragraph at lines 214--215
+Underfull \hbox (badness 3108) in paragraph at lines 233--234
 []\OT1/ptm/m/n/10 Maryland Bridge $\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/
 m/it/10 x; y\OT1/cmr/m/n/10 ) = []([] +$
  []
 
-<distance-measures.png, id=99, 481.8pt x 290.08376pt>
+<distance-measures.png, id=98, 481.8pt x 290.08376pt>
 File: distance-measures.png Graphic file (type png)
 
 <use distance-measures.png>
-Package pdftex.def Info: distance-measures.png used on input line 220.
+Package pdftex.def Info: distance-measures.png used on input line 240.
 (pdftex.def)             Requested size: 245.71754pt x 147.94075pt.
-
-Overfull \hbox (3.71754pt too wide) in paragraph at lines 220--221
-[][] 
- []
-
-<num-clusters.png, id=101, 481.8pt x 290.08376pt>
+ <num-clusters.png, id=100, 481.8pt x 290.08376pt>
 File: num-clusters.png Graphic file (type png)
- <use num-clusters.png>
-Package pdftex.def Info: num-clusters.png used on input line 228.
+
+<use num-clusters.png>
+Package pdftex.def Info: num-clusters.png used on input line 253.
 (pdftex.def)             Requested size: 245.71754pt x 147.94075pt.
 
-Underfull \hbox (badness 3009) in paragraph at lines 227--229
-[]\OT1/ptm/m/n/10 On the pic-ture be-low we pro-vide a plot with the
- []
 
-
-Underfull \hbox (badness 2600) in paragraph at lines 227--229
-\OT1/ptm/m/n/10 num-ber of clus-ters pro-duced by dif-fer-ent al-go-rithms :
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [2 <C:/github/graph-clustering-algorithms/project_article/f-measure.png> <C:/gi
 thub/graph-clustering-algorithms/project_article/perfomance-comparison.png> <C:
-/github/graph-clustering-algorithms/project_article/distance-measures.png> <C:/
-github/graph-clustering-algorithms/project_article/num-clusters.png>]
+/github/graph-clustering-algorithms/project_article/distance-measures.png>]
 <clusters-accuracy-parallel.png, id=118, 660.4675pt x 520.94624pt>
 File: clusters-accuracy-parallel.png Graphic file (type png)
 
 <use clusters-accuracy-parallel.png>
-Package pdftex.def Info: clusters-accuracy-parallel.png used on input line 236.
+Package pdftex.def Info: clusters-accuracy-parallel.png used on input line 262.
 
 (pdftex.def)             Requested size: 245.71754pt x 193.81226pt.
 
@@ -742,12 +747,15 @@ Package pdftex.def Info: clusters-accuracy-parallel.png used on input line 236.
 File: clusters-runtime-parallel.png Graphic file (type png)
 
 <use clusters-runtime-parallel.png>
-Package pdftex.def Info: clusters-runtime-parallel.png used on input line 237.
+Package pdftex.def Info: clusters-runtime-parallel.png used on input line 263.
 (pdftex.def)             Requested size: 245.71754pt x 175.51398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--240
+Underfull \hbox (badness 10000) in paragraph at lines 261--266
 []
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
@@ -759,13 +767,13 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 
-Underfull \hbox (badness 1418) in paragraph at lines 389--390
+Underfull \hbox (badness 1418) in paragraph at lines 415--416
 \OT1/ptm/m/n/8 works. Pro-ceed-ings of the Na-tional Academy of Sci-ences of th
 e
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 389--390
+Underfull \hbox (badness 1584) in paragraph at lines 415--416
 \OT1/ptm/m/n/8 United States of Amer-ica 101, no. 9 (March 2, 2004): 265863.
  []
 
@@ -778,7 +786,7 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 \OT1/ptm/m/n/8 (n.d.): n. pag. Web. []$http : / / web . ecs . baylor . edu / fa
 culty / cho / 4352 / 9[]$
  []
@@ -789,49 +797,52 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-<picture.png, id=123, 84.315pt x 98.3675pt>
+[3pdfTeX warning (ext4): destination with the same identifier (name{cite.IEEEho
+wto:Cho}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.438 ...lip,keepaspectratio]{picture}}]{John Doe}
+                                                   <C:/github/graph-clustering-
+algorithms/project_article/num-clusters.png> <C:/github/graph-clustering-algori
+thms/project_article/clusters-accuracy-parallel.png> <C:/github/graph-clusterin
+g-algorithms/project_article/clusters-runtime-parallel.png>]
+<picture.png, id=141, 84.315pt x 98.3675pt>
 File: picture.png Graphic file (type png)
  <use picture.png>
-Package pdftex.def Info: picture.png used on input line 412.
+Package pdftex.def Info: picture.png used on input line 438.
 (pdftex.def)             Requested size: 72.27145pt x 84.3167pt.
 File: picture.png Graphic file (type png)
 
 <use picture.png>
-Package pdftex.def Info: picture.png used on input line 412.
+Package pdftex.def Info: picture.png used on input line 438.
 (pdftex.def)             Requested size: 72.27145pt x 84.3167pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 431.
- [3pdfTeX warning (ext4): destination with the same identifier (name{cite.IEEEh
-owto:Cho}) has been already used, duplicate ignored
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 457.
+ [4
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.431 \end{document}
-                     <C:/github/graph-clustering-algorithms/project_article/clu
-sters-accuracy-parallel.png> <C:/github/graph-clustering-algorithms/project_art
-icle/clusters-runtime-parallel.png> <C:/github/graph-clustering-algorithms/proj
-ect_article/picture.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 431.
+ <C:/github/graph-clustering-algorithms/project_article/picture.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 457.
 
 (C:\github\graph-clustering-algorithms\project_article\project_article_salo.aux
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 431.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 431.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 457.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 457.
 Package rerunfilecheck Info: File `project_article_salo.out' has not changed.
-(rerunfilecheck)             Checksum: 774B75E1668241CD5ACB6D36940E1B24;891.
+(rerunfilecheck)             Checksum: 6D6909739CF12488377121AEB2633506;962.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 431.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 457.
  ) 
 Here is how much of TeX's memory you used:
- 14986 strings out of 493921
- 266435 string characters out of 3147285
- 335336 words of memory out of 3000000
- 17973 multiletter control sequences out of 15000+200000
- 40498 words of font info for 85 fonts, out of 3000000 for 9000
+ 15279 strings out of 493921
+ 270056 string characters out of 3147285
+ 341509 words of memory out of 3000000
+ 18252 multiletter control sequences out of 15000+200000
+ 41605 words of font info for 86 fonts, out of 3000000 for 9000
  844 hyphenation exceptions out of 8191
- 56i,10n,55p,749b,365s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,10n,55p,749b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/font
@@ -842,9 +853,9 @@ cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on project_article_salo.pdf (3 pages, 255225 bytes).
+Output written on project_article_salo.pdf (4 pages, 255708 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 500000)
- 208 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 195 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
