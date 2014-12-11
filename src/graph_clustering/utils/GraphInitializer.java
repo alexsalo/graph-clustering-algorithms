@@ -3,6 +3,8 @@ package graph_clustering.utils;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -22,6 +24,30 @@ public class GraphInitializer {
 			initializer = new GraphInitializer(filename);
 		readFile();
 		initGraph();
+		ArrayList<String> g  = new ArrayList<String>();
+		int i = 0, j = 0;
+		ArrayList<String> names = new ArrayList<String>(graph.keySet());
+		Scanner sc = null;
+		for (String s : inputStrings) {
+			sc = new Scanner(s);
+			String s1 = sc.next();
+			String s2 = sc.next();
+			g.add(Integer.toString(names.indexOf(s1)) + " "
+					+ Integer.toString(names.indexOf(s2)));
+		}
+		sc.close();
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("g_test.txt", "UTF-8");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		for (String s : g){
+			writer.println(s);
+		}
+		writer.close();
 		return graph;
 	}
 	
